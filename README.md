@@ -18,8 +18,12 @@ The app run on localhost 3000 and can then be installed.
 
 ## Git Repo
 
-https://github.com/Baldemyr/19-PWA-Text.git
+https://github.com/Baldemyr/19-PWA-text2
 
 ## Image
 
 ![19image1](https://user-images.githubusercontent.com/46965040/181134287-7ae14cf4-0269-4a24-99cf-d3643cb5fbd0.png)
+
+## Deployed Application on Heroku
+
+https://pwa-text-19-2.herokuapp.com/
