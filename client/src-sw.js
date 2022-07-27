@@ -26,15 +26,25 @@ warmStrategyCache({
 
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
-registerRoute(
-  ({request})=> ['style', 'script', 'worker'].includes(request.destination),
-    new StaleWhileRevalidate({
-      cacheName: 'asset-cache',
-      plugins: [
-        new CacheableResponsePlugin({
-          statuses: [0, 200]
-        })
-      ]
-    })
-  );
+// TODO: Implement asset caching
 
+registerRoute(
+
+  // Makes a register route for caching style, script, worker, image, document, and manifest files 
+
+  ({ request }) => ['style', 'script', 'worker', 'image', 'document', 'manifest'].includes(request.destination), 
+
+  // StaleWhileRevalidate allows quick request response with a cached item if its available, falling back to the network request if it's not. The network request then updates cache
+ 
+  new StaleWhileRevalidate({
+    cacheName: 'asset-cache',
+    plugins: [
+
+      // CacheableResponsePlugin is used to only cache requests that have a 0 or 200 status, preventing bad requests from being saved.
+  
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+    ],
+  })
+);
